@@ -11,13 +11,11 @@ path_to_stl = "/Users/raven/PycharmProjects/socket_trays/sockets.stl"
 path_to_scad = "/Users/raven/PycharmProjects/socket_trays/sockets.scad"
 
 # Calculate socket_offsets
-i = -1
-for width in socket_widths:
-    i += 1
+for i in range(0, len(socket_widths)):
     if i == 0:
-        socket_offsets.append((width/2) + border_width)
+        socket_offsets.append((socket_widths[i]/2) + border_width)
     else:
-        socket_offsets.append((width/2) + (socket_widths[i-1]/2) + socket_offsets[i-1] + socket_spacing)
+        socket_offsets.append((socket_widths[i]/2) + (socket_widths[i-1]/2) + socket_offsets[i-1] + socket_spacing)
 
 # Calculate tray size
 tray_width = 0
