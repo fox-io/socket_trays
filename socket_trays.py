@@ -18,8 +18,6 @@ for width in socket_widths:
     else:
         socket_offsets.append(width/2 + socket_widths[i-1]/2 + socket_offsets[i-1] + socket_spacing)
 
-print(socket_offsets)
-
 tray_width = 0
 for width in socket_widths:
     tray_width += width
@@ -56,6 +54,10 @@ difference()
         for(i = [0:1:len(socket_widths)-1])
             translate([socket_offsets[i], (socket_heights[i]/4)* 3 + border_width, 0.75])
                 cylinder(3, d=6.5, true);
+        for(i = [0:1:len(socket_widths)-1])
+            rotate([90, 0, 0])
+                translate([socket_offsets[i], 0, -1 * ((socket_heights[i]/2) + border_width)])
+                    cube([3, 3, 33], true);
     }}
 }}'''
 
