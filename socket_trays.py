@@ -4,7 +4,7 @@ socket_widths = [31, 29, 27, 25.5, 23]
 socket_heights = [64.75, 64.75, 57, 57, 54.5]
 socket_offsets = []
 border_width = 5
-base_height = 5
+base_height = 7
 socket_spacing = 0.5
 path_to_openscad = '/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD'
 path_to_stl = "/Users/raven/PycharmProjects/socket_trays/sockets.stl"
@@ -36,7 +36,6 @@ socket_offsets = {socket_offsets};
 
 border_width = {border_width};
 base_height = {base_height};
-socket_spacing = {socket_spacing};
 
 difference()
 {{
@@ -46,18 +45,18 @@ difference()
     {{
         for(i = [0:1:len(socket_widths)-1])
             rotate([90, 0, 0])
-                translate([socket_offsets[i], socket_widths[i]/2.0 + base_height, -1.0 * (socket_heights[i] + border_width)])
+                translate([socket_offsets[i], {tray_height}, -1.0 * (socket_heights[i] + border_width)])
                     cylinder(socket_heights[i], d=socket_widths[i], true);
         for(i = [0:1:len(socket_widths)-1])
-            translate([socket_offsets[i], (socket_heights[i]/4)* 1 + border_width, 2.25])
+            translate([socket_offsets[i], (socket_heights[i]/4)* 1 + border_width, {tray_height} - (socket_widths[i]/2) - 2.25])
                 cylinder(3.25, d=7, true);
         for(i = [0:1:len(socket_widths)-1])
-            translate([socket_offsets[i], (socket_heights[i]/4)* 3 + border_width, 2.25])
+            translate([socket_offsets[i], (socket_heights[i]/4)* 3 + border_width, {tray_height} - (socket_widths[i]/2) - 2.25])
                 cylinder(3.25, d=7, true);
         for(i = [0:1:len(socket_widths)-1])
             rotate([90, 0, 0])
-                translate([socket_offsets[i], 0, -1 * ((socket_heights[i]/2) + border_width)])
-                    cube([5, 5, 34.5], true);
+                translate([socket_offsets[i], {tray_height} - (socket_widths[i]/2) - 3, -1 * ((socket_heights[i]/2) + border_width)])
+                    cube([5, 7, 34.5], true);
     }}
 }}'''
 
