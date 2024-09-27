@@ -162,3 +162,8 @@ cython_debug/
 #.idea/
 !/sockets.scad
 !/sockets.stl
+.idea/misc.xml
+.idea/modules.xml
+.idea/socket_trays.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
