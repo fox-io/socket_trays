@@ -28,22 +28,22 @@ paths = {
 # Calculate socket_offsets
 for i in range(0, len(sockets['widths'])):
     if i == 0:
-        sockets['offsets'].append((sockets['widths'][i]/2) + base['border'])
+        sockets['offsets'].append((sockets['widths'][i] / 2) + base['border'])
     else:
-        sockets['offsets'].append((sockets['widths'][i]/2) + (sockets['widths'][i-1]/2) + sockets['offsets'][i-1] + sockets['spacing'])
+        sockets['offsets'].append((sockets['widths'][i] / 2) + (sockets['widths'][i - 1] / 2) + sockets['offsets'][i - 1] + sockets['spacing'])
 
 # Determine tray width by adding all socket widths, socket spacing between each socket, and two borders.
 tray_width = 0
 for width in sockets['widths']:
     tray_width += width
-tray_width += (len(sockets['widths'])-1) * sockets['spacing']
+tray_width += (len(sockets['widths']) - 1) * sockets['spacing']
 tray_width += base['border'] * 2
 
 # Determine tray depth by adding the largest socket height and two borders.
 tray_depth = max(sockets['heights']) + base['border'] * 2
 
 # Determine tray height by adding the largest socket width's radius, the bottom padding, height of the shunt and magnet.
-tray_height = (max(sockets['widths'])/2) + base['bottom'] + shunt['height'] + magnet['height']
+tray_height = (max(sockets['widths']) / 2) + base['bottom'] + shunt['height'] + magnet['height']
 
 # Create .scad contents
 output = f'''
